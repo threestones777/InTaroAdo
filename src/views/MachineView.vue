@@ -12,8 +12,6 @@ export default {
     }
   },
   created() {
-    console.log(77777)
-    console.log(this.$route.query.name)
     this.iframeSrc = `/html/${localStorage.machine}.html`
   }
 }
