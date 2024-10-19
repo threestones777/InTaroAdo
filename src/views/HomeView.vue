@@ -47,8 +47,7 @@
               data-bs-target="#carouselExampleInterval"
               data-bs-slide="prev"
             >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <i class="bi bi-chevron-left iconCss"></i>
             </button>
             <button
               class="carousel-control-next"
@@ -56,8 +55,7 @@
               data-bs-target="#carouselExampleInterval"
               data-bs-slide="next"
             >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <i class="bi bi-chevron-right iconCss"></i>
             </button>
           </div>
         </div>
@@ -124,8 +122,7 @@
               data-bs-target="#carouselInterval"
               data-bs-slide="prev"
             >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <i class="bi bi-chevron-left iconCss"></i>
             </button>
             <button
               class="carousel-control-next"
@@ -133,8 +130,7 @@
               data-bs-target="#carouselInterval"
               data-bs-slide="next"
             >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <i class="bi bi-chevron-right iconCss"></i>
             </button>
           </div>
         </div>
@@ -152,7 +148,7 @@ export default {
     toSeeMachine(machine: any) {
       document.documentElement.scrollTop = 0
       localStorage.machine = machine
-      this.$router.push({ name: 'Machine' })
+      this.$router.push({ name: 'Machine', query: { name: machine } })
     }
   }
 }
@@ -174,5 +170,10 @@ export default {
 }
 .txtCss h3 {
   text-align: center;
+}
+.iconCss {
+  font-size: 32px;
+  background-color: #6a2c70;
+  color: #fff;
 }
 </style>

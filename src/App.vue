@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header>
-    <nav class="navBg navbar navbar-expand-sm fixed-top navbar-dark">
+    <nav id="headHeight" class="navBg navbar navbar-expand-sm fixed-top navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img src="/image/154014.ico" width="32" />
@@ -41,7 +41,7 @@ import { RouterView } from 'vue-router'
               </a>
               <ul class="dropdown-menu" style="background-color: #6a2c70">
                 <li>
-                  <a class="dropdown-item dropCss" href="/Machine">SolidWorks</a>
+                  <a class="dropdown-item dropCss" href="#/Machine">SolidWorks</a>
                 </li>
               </ul>
             </li>
@@ -50,10 +50,10 @@ import { RouterView } from 'vue-router'
       </div>
     </nav>
   </header>
-  <div style="margin-top: 66px">
+  <div style="margin: 66px 0 30px 0">
     <RouterView />
   </div>
-  <div class="container-fluid footCss">
+  <div id="footHeight" class="container-fluid footCss">
     <div>
       <img src="/image/154014.ico" width="32" />
       <div class="name">
@@ -64,14 +64,29 @@ import { RouterView } from 'vue-router'
     <div>Copyright ©2025 InTaroAdo 版权所有</div>
   </div>
 </template>
-
+<script lang="ts">
+export default {
+  data() {
+    return {}
+  },
+  mounted() {
+    console.log(document.getElementById('headHeight')?.scrollHeight)
+    console.log(document.getElementById('footHeight')?.scrollHeight)
+    let allHeight = Number(window.innerHeight)
+    let headHeight = Number(document.getElementById('headHeight')?.scrollHeight)
+    let footHeight = Number(document.getElementById('footHeight')?.scrollHeight)
+    localStorage.machineViewHeight = allHeight - headHeight - footHeight
+    console.log(localStorage.machineViewHeight)
+  }
+}
+</script>
 <style scoped>
 .navBg {
   background-color: #6a2c70;
 }
 .footCss {
-  background-color: #6a2c70;
-  color: #fff;
+  /* background-color: #6a2c70; */
+  color: #6a2c70;
   text-align: center;
   padding: 5px;
   font-size: 14px;
