@@ -70,13 +70,10 @@ export default {
     return {}
   },
   mounted() {
-    console.log(document.getElementById('headHeight')?.scrollHeight)
-    console.log(document.getElementById('footHeight')?.scrollHeight)
     let allHeight = Number(window.innerHeight)
     let headHeight = Number(document.getElementById('headHeight')?.scrollHeight)
     let footHeight = Number(document.getElementById('footHeight')?.scrollHeight)
     localStorage.machineViewHeight = allHeight - headHeight - footHeight
-    console.log(localStorage.machineViewHeight)
   }
 }
 </script>
@@ -85,7 +82,6 @@ export default {
   background-color: #6a2c70;
 }
 .footCss {
-  /* background-color: #6a2c70; */
   color: #6a2c70;
   text-align: center;
   padding: 5px;

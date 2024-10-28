@@ -1,0 +1,45 @@
+[
+  [
+    {
+      "id": 125681,
+      "isActive": true,
+      "name": "大展宏图",
+      "imageUrl": "/image/carousel/125681.jpg"
+    },
+    {
+      "id": 666666,
+      "isActive": false,
+      "name": "年年有余",
+      "imageUrl": "/image/carousel/666666.jpg"
+    },
+    {
+      "id": 100040,
+      "isActive": false,
+      "name": "花开富贵",
+      "imageUrl": "/image/carousel/100040.jpg"
+    }
+  ],
+  [
+    {
+      "id": 153131,
+      "isActive": true,
+      "name": "茶壶",
+      "click": "teapot",
+      "imageUrl": "/image/carousel/153131.png"
+    },
+    {
+      "id": 153313,
+      "isActive": false,
+      "name": "盖",
+      "click": "dao",
+      "imageUrl": "/image/carousel/153313.png"
+    },
+    {
+      "id": 152534,
+      "isActive": false,
+      "name": "底座",
+      "click": "di",
+      "imageUrl": "/image/carousel/152534.png"
+    }
+  ]
+]

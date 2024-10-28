@@ -1,150 +1,200 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>
-    <div class="container-fluid">
-      <!--  -->
-      <div class="row">
-        <div class="col-sm-6">
-          <div
-            id="carouselExampleInterval"
-            class="carousel slide"
-            data-bs-ride="carousel"
-            data-bs-interval="4000"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div
-                  class="picture d-block w-100"
-                  style="
-                    background: url('/image/125681.bmp') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
-              </div>
-              <div class="carousel-item">
-                <div
-                  class="picture d-block w-100"
-                  style="
-                    background: url('/image/666666.bmp') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
-              </div>
-              <div class="carousel-item">
-                <div
-                  class="picture d-block w-100"
-                  style="
-                    background: url('/image/100040.bmp') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
+  <div class="container-fluid">
+    <!-- 精雕 -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div
+          id="carouselExampleInterval"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="4000"
+        >
+          <div class="carousel-inner">
+            <div
+              v-for="(item, index) in jdArray"
+              :key="index"
+              :class="{ active: item.isActive }"
+              class="carousel-item"
+            >
+              <div
+                class="picture d-block w-100"
+                :style="{
+                  background: `url(${item.imageUrl}) no-repeat center center`
+                }"
+                style="background-size: contain"
+              >
+                <i
+                  class="bi bi-eye-fill carouselToSee"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  @click="openDialog(item)"
+                ></i>
               </div>
             </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleInterval"
-              data-bs-slide="prev"
-            >
-              <i class="bi bi-chevron-left iconCss"></i>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleInterval"
-              data-bs-slide="next"
-            >
-              <i class="bi bi-chevron-right iconCss"></i>
-            </button>
           </div>
-        </div>
-        <div class="col-sm-6 txtCss">
-          <h3>浮雕</h3>
-          <p>
-            浮雕是雕刻的一种，艺术家在一块平板上将他要塑造的形象雕刻出来，使它脱离原来材料的平面。浮雕的材料有石头、木头、象牙和金属等，一般分为浅浮雕、高浮雕和凹雕3种。浮雕是雕塑与绘画结合的产物，用压缩的办法来处理对象，靠透视等因素来表现三维空间，并只供一面或两面观看。由于其压缩的特性，所占空间较小，所以适用于多种环境的装饰。
-          </p>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev"
+          >
+            <i class="bi bi-chevron-left iconCss"></i>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next"
+          >
+            <i class="bi bi-chevron-right iconCss"></i>
+          </button>
         </div>
       </div>
-      <!--  -->
-      <hr color="#6a2c70" size="5" />
-      <div class="row">
-        <div class="col-sm-6 txtCss">
-          <h3>三维 CAD</h3>
-          <p>
-            三维
-            CAD，即三维计算机辅助设计，是一种设计和技术文档编制技术，它使用自动化的流程替代手动制图。三维
-            CAD软件常为建筑师、工程师和其他专业人员所用，可在计算机上以三维方式使用一组点精确地表示和可视化展示对象。帮助用户探索并分享创意、直观展示概念并在设计被制作成实物之前对设计效果进行模拟。
-          </p>
-        </div>
-        <div class="col-sm-6">
-          <div
-            id="carouselInterval"
-            class="carousel slide"
-            data-bs-ride="carousel"
-            data-bs-interval="5000"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div
-                  @click="toSeeMachine('teapot')"
-                  class="picture machineHover d-block w-100"
-                  style="
-                    background: url('/image/153131.png') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
-              </div>
-              <div class="carousel-item">
-                <div
-                  @click="toSeeMachine('dao')"
-                  class="picture machineHover d-block w-100"
-                  style="
-                    background: url('/image/153313.png') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
-              </div>
-              <div class="carousel-item">
-                <div
-                  @click="toSeeMachine('di')"
-                  class="picture machineHover d-block w-100"
-                  style="
-                    background: url('/image/152534.png') no-repeat center center;
-                    background-size: contain;
-                  "
-                ></div>
+      <div class="col-sm-6 txtCss">
+        <h3>浮雕</h3>
+        <p>
+          浮雕是雕刻的一种，艺术家在一块平板上将他要塑造的形象雕刻出来，使它脱离原来材料的平面。浮雕的材料有石头、木头、象牙和金属等，一般分为浅浮雕、高浮雕和凹雕3种。浮雕是雕塑与绘画结合的产物，用压缩的办法来处理对象，靠透视等因素来表现三维空间，并只供一面或两面观看。由于其压缩的特性，所占空间较小，所以适用于多种环境的装饰。
+        </p>
+      </div>
+    </div>
+    <!-- CAD -->
+    <hr color="#6a2c70" size="5" />
+    <div class="row">
+      <div class="col-sm-6 txtCss">
+        <h3>三维 CAD</h3>
+        <p>
+          三维
+          CAD，即三维计算机辅助设计，是一种设计和技术文档编制技术，它使用自动化的流程替代手动制图。三维
+          CAD软件常为建筑师、工程师和其他专业人员所用，可在计算机上以三维方式使用一组点精确地表示和可视化展示对象。帮助用户探索并分享创意、直观展示概念并在设计被制作成实物之前对设计效果进行模拟。
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <div
+          id="carouselInterval"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="5000"
+        >
+          <div class="carousel-inner">
+            <div
+              v-for="(item, index) in cadArray"
+              :key="index"
+              :class="{ active: item.isActive }"
+              class="carousel-item"
+            >
+              <div
+                class="picture d-block w-100"
+                :style="{
+                  background: `url(${item.imageUrl}) no-repeat center center`
+                }"
+                style="background-size: contain"
+              >
+                <i class="bi bi-eye-fill carouselToSee" @click="toSeeMachine(item.click)"></i>
               </div>
             </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselInterval"
-              data-bs-slide="prev"
-            >
-              <i class="bi bi-chevron-left iconCss"></i>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselInterval"
-              data-bs-slide="next"
-            >
-              <i class="bi bi-chevron-right iconCss"></i>
-            </button>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselInterval"
+            data-bs-slide="prev"
+          >
+            <i class="bi bi-chevron-left iconCss"></i>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselInterval"
+            data-bs-slide="next"
+          >
+            <i class="bi bi-chevron-right iconCss"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="picList">
+      <i class="bi bi-water"></i>
+      <i class="bi bi-water"></i>
+      <i class="bi bi-card-list"></i>
+      <i class="bi bi-water"></i>
+      <i class="bi bi-water"></i>
+    </div>
+    <!-- 各种图片 -->
+    <div class="row">
+      <div v-for="(item, index) in picArray" :key="index" class="col-sm-3">
+        <div class="card cardPd">
+          <div
+            class="picture cardCss"
+            :style="{
+              background: `url(${item.imageUrl}) no-repeat center center`
+            }"
+            style="background-size: contain"
+          ></div>
+          <div class="card-body" style="color: #6a2c70">
+            <h5 class="card-title">
+              <span>{{ item.name }}</span>
+              <i
+                class="bi bi-eye-fill toSee"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                @click="openDialog(item)"
+              ></i>
+            </h5>
           </div>
         </div>
       </div>
     </div>
-  </main>
+    <!-- 弹窗 -->
+    <div
+      class="modal fade"
+      data-bs-backdrop="static"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" v-if="isShow">
+          <div class="modal-body" style="text-align: center">
+            <img :src="dialogMsg.imageUrl" alt="" />
+          </div>
+          <div class="modal-footer">
+            <i class="bi bi-x-circle closeBtn" data-bs-dismiss="modal" @click="isShow = false"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
+import jsonData from '@/json/carousel.json'
+import picData from '@/json/picShow.json'
 export default {
   data() {
-    return {}
+    return {
+      jdArray: [] as any,
+      cadArray: [] as any,
+      picArray: [] as any,
+      dialogMsg: {} as any,
+      isShow: false
+    }
   },
-  created() {},
+  created() {
+    this.jdArray = []
+    this.cadArray = []
+    this.picArray = []
+    this.jdArray = jsonData[0]
+    this.cadArray = jsonData[1]
+    this.picArray = picData
+  },
   methods: {
+    openDialog(msg: any) {
+      this.dialogMsg = {}
+      this.dialogMsg = msg
+      this.isShow = true
+    },
     toSeeMachine(machine: any) {
       document.documentElement.scrollTop = 0
       localStorage.machine = machine
@@ -157,9 +207,6 @@ export default {
 .picture {
   height: 300px;
   margin-bottom: 10px;
-}
-.machineHover {
-  cursor: pointer;
 }
 .txtCss {
   color: #6a2c70;
@@ -175,5 +222,46 @@ export default {
   font-size: 32px;
   background-color: #6a2c70;
   color: #fff;
+}
+.carouselToSee {
+  font-size: 32px;
+  color: #6a2c70;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+.carouselToSee:hover {
+  cursor: pointer;
+  color: #ff7c00;
+}
+.picList {
+  text-align: center;
+}
+.picList i {
+  font-size: 32px;
+  color: #6a2c70;
+}
+.toSee {
+  font-size: 24px;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+.closeBtn {
+  font-size: 32px;
+  color: #6a2c70;
+}
+.closeBtn:hover,
+.toSee:hover {
+  cursor: pointer;
+  color: #ff7c00;
+}
+.cardPd {
+  padding: 10px;
+  margin-top: 10px;
+  background-image: linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4);
+}
+.cardCss {
+  margin-top: 12px;
 }
 </style>
