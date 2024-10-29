@@ -190,7 +190,6 @@ export default {
       this.isShow = true
     },
     toSeeMachine(machine: any) {
-      document.documentElement.scrollTop = 0
       localStorage.machine = machine
       this.$router.push({ name: 'Machine', query: { name: machine } })
     }

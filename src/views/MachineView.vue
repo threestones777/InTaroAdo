@@ -13,9 +13,8 @@ export default {
     }
   },
   created() {
-    console.log('9999999999999')
-    console.log(this.$route.query.name)
-    this.viewHeight = Number(localStorage.machineViewHeight) - 60
+    document.documentElement.scrollTop = 0
+    this.viewHeight = Number(localStorage.machineViewHeight) - 55
     this.iframeSrc = `/html/${this.$route.query.name ? this.$route.query.name : 'teapot'}.html`
   }
 }
