@@ -21,7 +21,7 @@
               <div
                 class="picture d-block w-100"
                 :style="{
-                  background: `url(${item.imageUrl}) no-repeat center center`
+                  background: `url(${item.netUrl}) no-repeat center center`
                 }"
                 style="background-size: contain"
               >
@@ -87,7 +87,7 @@
               <div
                 class="picture d-block w-100"
                 :style="{
-                  background: `url(${item.imageUrl}) no-repeat center center`
+                  background: `url(${item.netUrl}) no-repeat center center`
                 }"
                 style="background-size: contain"
               >
@@ -114,13 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="picList">
-      <i class="bi bi-water"></i>
-      <i class="bi bi-water"></i>
-      <i class="bi bi-card-list"></i>
-      <i class="bi bi-water"></i>
-      <i class="bi bi-water"></i>
-    </div>
+    <hr class="hr-double-arrow" />
     <!-- 各种图片 -->
     <div class="row">
       <div v-for="(item, index) in picArray" :key="index" class="col-sm-3">
@@ -128,7 +122,7 @@
           <div
             class="picture cardCss"
             :style="{
-              background: `url(${item.imageUrl}) no-repeat center center`
+              background: `url(${item.netUrl}) no-repeat center center`
             }"
             style="background-size: contain"
           ></div>
@@ -158,7 +152,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" v-if="isShow">
           <div class="modal-body" style="text-align: center">
-            <img :src="dialogMsg.imageUrl" alt="" />
+            <img :src="dialogMsg.netUrl" alt="" />
           </div>
           <div class="modal-footer">
             <i class="bi bi-x-circle closeBtn" data-bs-dismiss="modal" @click="isShow = false"></i>
@@ -263,5 +257,35 @@ export default {
 }
 .cardCss {
   margin-top: 12px;
+}
+.hr-double-arrow {
+  color: #6a2c70;
+  border: double;
+  border-width: 8px 5px;
+  border-color: #6a2c70 transparent;
+  height: 5px;
+  overflow: visible;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+.hr-double-arrow:before,
+.hr-double-arrow:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-width: 0 3px 3px 0;
+  border-style: double;
+  top: -5px;
+  background: radial-gradient(2px at 1px 1px, currentColor 2px, transparent 0) no-repeat;
+}
+.hr-double-arrow:before {
+  transform: rotate(-45deg);
+  left: -20px;
+}
+.hr-double-arrow:after {
+  transform: rotate(135deg);
+  right: -20px;
 }
 </style>
