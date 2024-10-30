@@ -40,9 +40,7 @@ import { RouterView } from 'vue-router'
                 机械
               </a>
               <ul class="dropdown-menu" style="background-color: #6a2c70">
-                <li>
-                  <a class="dropdown-item dropCss" href="#/Machine">SolidWorks</a>
-                </li>
+                <li><a class="dropdown-item dropCss" href="#/ttTT">SolidWorks</a>s</li>
               </ul>
             </li>
           </ul>
