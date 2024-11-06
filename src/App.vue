@@ -16,7 +16,7 @@ import { RouterView } from 'vue-router'
           data-bs-toggle="collapse"
           data-bs-target="#navbarScroll"
           aria-controls="navbarScroll"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
@@ -24,23 +24,50 @@ import { RouterView } from 'vue-router'
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">首页</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">精雕</a>
+              <a class="nav-link toHover" href="/">首页</a>
             </li>
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle toHover"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                机械
+                精雕
               </a>
               <ul class="dropdown-menu" style="background-color: #6a2c70">
-                <li><a class="dropdown-item dropCss" href="#/ttTT">SolidWorks</a>s</li>
+                <li><a class="dropdown-item dropCss" @click="toJump('JDCarving')">技巧</a></li>
+                <li><a class="dropdown-item dropCss" @click="toJump('JDCarvingImg')">图纸</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle toHover"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                三维 CAD
+              </a>
+              <ul class="dropdown-menu" style="background-color: #6a2c70">
+                <li><a class="dropdown-item dropCss" @click="toJump('3DCad')">技巧</a></li>
+                <li><a class="dropdown-item dropCss" @click="toJump('3DCadModel')">模型</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle toHover"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                前端
+              </a>
+              <ul class="dropdown-menu" style="background-color: #6a2c70">
+                <li><a class="dropdown-item dropCss" @click="toJump('HtmlCssJs')">技巧</a></li>
               </ul>
             </li>
           </ul>
@@ -72,6 +99,12 @@ export default {
     let headHeight = Number(document.getElementById('headHeight')?.scrollHeight)
     let footHeight = Number(document.getElementById('footHeight')?.scrollHeight)
     localStorage.machineViewHeight = allHeight - headHeight - footHeight
+  },
+  methods: {
+    toJump(target: any) {
+      document.getElementById('navbarScroll')?.classList.remove('show')
+      this.$router.push({ name: target })
+    }
   }
 }
 </script>
@@ -101,7 +134,12 @@ export default {
   color: #fff;
 }
 .dropCss:hover {
+  cursor: pointer;
   background-color: #6a2c70;
+  color: #ff7c00;
+}
+.toHover:hover {
+  cursor: pointer;
   color: #ff7c00;
 }
 </style>

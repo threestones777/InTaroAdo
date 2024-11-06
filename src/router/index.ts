@@ -6,24 +6,38 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView
     },
     {
       path: '/Machine',
       name: 'Machine',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/MachineView.vue')
     },
     {
-      path: '/ttTT',
-      name: 'ttTT',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/ttTT.vue')
+      path: '/JDCarving',
+      name: 'JDCarving',
+      component: () => import('../views/JDCarving.vue')
+    },
+    {
+      path: '/JDCarvingImg',
+      name: 'JDCarvingImg',
+      component: () => import('../views/JDCarvingImg.vue')
+    },
+    {
+      path: '/3DCad',
+      name: '3DCad',
+      component: () => import('../views/3DCad.vue')
+    },
+    {
+      path: '/3DCadModel',
+      name: '3DCadModel',
+      component: () => import('../views/3DCadModel.vue')
+    },
+    {
+      path: '/HtmlCssJs',
+      name: 'HtmlCssJs',
+      component: () => import('../views/HtmlCssJs.vue')
     }
   ]
 })
