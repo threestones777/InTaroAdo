@@ -13,11 +13,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vue-office/docx": "^1.6.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "element-plus": "^2.8.7",
+    "js-base64": "^3.7.7",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
+    "vue-demi": "^0.14.10",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {

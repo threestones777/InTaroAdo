@@ -15,7 +15,10 @@ export default {
   created() {
     document.documentElement.scrollTop = 0
     this.viewHeight = Number(localStorage.machineViewHeight) - 55
-    this.iframeSrc = `/html/${this.$route.query.name ? this.$route.query.name : 'teapot'}.html`
+    // 本地
+    // this.iframeSrc = `/html/${this.$route.query.name ? this.$route.query.name : 'teapot'}.html`
+    // 网络
+    this.iframeSrc = `https://threestones777.github.io/html/${this.$route.query.name ? this.$route.query.name : 'teapot'}.html`
   }
 }
 </script>

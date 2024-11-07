@@ -38,6 +38,11 @@ const router = createRouter({
       path: '/HtmlCssJs',
       name: 'HtmlCssJs',
       component: () => import('../views/HtmlCssJs.vue')
+    },
+    {
+      path: '/SkillView',
+      name: 'SkillView',
+      component: () => import('../views/SkillView.vue')
     }
   ]
 })

@@ -60,7 +60,7 @@
       </div>
     </div>
     <!-- CAD -->
-    <hr color="#6a2c70" size="5" />
+    <hr color="#910326" size="5" />
     <div class="row">
       <div class="col-sm-6 txtCss">
         <h3>三维 CAD</h3>
@@ -126,7 +126,7 @@
             }"
             style="background-size: contain"
           ></div>
-          <div class="card-body" style="color: #6a2c70">
+          <div class="card-body" style="color: #910326">
             <h5 class="card-title">
               <span>{{ item.name }}</span>
               <i
@@ -149,7 +149,7 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" v-if="isShow">
           <div class="modal-body" style="text-align: center">
             <img :src="dialogMsg.netUrl" alt="" />
@@ -202,7 +202,7 @@ export default {
   margin-bottom: 10px;
 }
 .txtCss {
-  color: #6a2c70;
+  color: #910326;
   margin-top: 30px;
 }
 .txtCss p {
@@ -213,15 +213,19 @@ export default {
 }
 .iconCss {
   font-size: 32px;
-  background-color: #6a2c70;
+  background-color: #910326;
+  color: #fff;
+}
+.iconCss:hover {
+  background-color: #ff7c00;
   color: #fff;
 }
 .carouselToSee {
   font-size: 32px;
-  color: #6a2c70;
+  color: #910326;
   position: absolute;
-  top: 40%;
-  left: 45%;
+  top: 43%;
+  left: 46%;
 }
 .carouselToSee:hover {
   cursor: pointer;
@@ -232,7 +236,7 @@ export default {
 }
 .picList i {
   font-size: 32px;
-  color: #6a2c70;
+  color: #910326;
 }
 .toSee {
   font-size: 24px;
@@ -242,7 +246,7 @@ export default {
 }
 .closeBtn {
   font-size: 32px;
-  color: #6a2c70;
+  color: #910326;
 }
 .closeBtn:hover,
 .toSee:hover {
@@ -258,10 +262,10 @@ export default {
   margin-top: 12px;
 }
 .hr-double-arrow {
-  color: #6a2c70;
+  color: #910326;
   border: double;
   border-width: 8px 5px;
-  border-color: #6a2c70 transparent;
+  border-color: #910326 transparent;
   height: 5px;
   overflow: visible;
   margin-left: 20px;

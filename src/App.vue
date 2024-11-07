@@ -36,7 +36,7 @@ import { RouterView } from 'vue-router'
               >
                 精雕
               </a>
-              <ul class="dropdown-menu" style="background-color: #6a2c70">
+              <ul class="dropdown-menu" style="background-color: #910326">
                 <li><a class="dropdown-item dropCss" @click="toJump('JDCarving')">技巧</a></li>
                 <li><a class="dropdown-item dropCss" @click="toJump('JDCarvingImg')">图纸</a></li>
               </ul>
@@ -51,7 +51,7 @@ import { RouterView } from 'vue-router'
               >
                 三维 CAD
               </a>
-              <ul class="dropdown-menu" style="background-color: #6a2c70">
+              <ul class="dropdown-menu" style="background-color: #910326">
                 <li><a class="dropdown-item dropCss" @click="toJump('3DCad')">技巧</a></li>
                 <li><a class="dropdown-item dropCss" @click="toJump('3DCadModel')">模型</a></li>
               </ul>
@@ -66,7 +66,7 @@ import { RouterView } from 'vue-router'
               >
                 前端
               </a>
-              <ul class="dropdown-menu" style="background-color: #6a2c70">
+              <ul class="dropdown-menu" style="background-color: #910326">
                 <li><a class="dropdown-item dropCss" @click="toJump('HtmlCssJs')">技巧</a></li>
               </ul>
             </li>
@@ -75,7 +75,7 @@ import { RouterView } from 'vue-router'
       </div>
     </nav>
   </header>
-  <div style="margin: 66px 0 30px 0">
+  <div style="margin: 66px 10px 30px 10px">
     <RouterView />
   </div>
   <div id="footHeight" class="container-fluid footCss">
@@ -110,10 +110,10 @@ export default {
 </script>
 <style scoped>
 .navBg {
-  background-color: #6a2c70;
+  background-color: #910326;
 }
 .footCss {
-  color: #6a2c70;
+  color: #910326;
   text-align: center;
   padding: 5px;
   font-size: 14px;
@@ -135,8 +135,11 @@ export default {
 }
 .dropCss:hover {
   cursor: pointer;
-  background-color: #6a2c70;
+  background-color: #910326;
   color: #ff7c00;
+}
+.toHover {
+  color: #fff;
 }
 .toHover:hover {
   cursor: pointer;
