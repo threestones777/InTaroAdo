@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header>
-    <nav id="headHeight" class="navBg navbar navbar-expand-sm fixed-top navbar-dark">
+    <nav id="headHeight" class="navBg navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img src="/image/154014.ico" width="32" />
@@ -78,7 +78,7 @@ import { RouterView } from 'vue-router'
   <div style="margin: 66px 10px 30px 10px">
     <RouterView />
   </div>
-  <div id="footHeight" class="container-fluid footCss">
+  <div v-if="isShow" id="footHeight" class="container-fluid footCss">
     <div>
       <img src="/image/154014.ico" width="32" />
       <div class="name">
@@ -92,7 +92,19 @@ import { RouterView } from 'vue-router'
 <script lang="ts">
 export default {
   data() {
-    return {}
+    return {
+      isShow: true
+    }
+  },
+  watch: {
+    $route: {
+      handler: function (route) {
+        console.log(8888888888)
+        console.log(route.name)
+        this.isShow = route.name !== 'SkillView' && route.name !== 'Machine'
+      },
+      immediate: true
+    }
   },
   mounted() {
     let allHeight = Number(window.innerHeight)

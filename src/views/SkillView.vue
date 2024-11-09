@@ -1,26 +1,23 @@
 <template>
-  <vue-office-docx :src="docx" @rendered="renderedHandler" @error="errorHandler" />
+  <div>
+    <iframe style="width: 100%" :height="viewHeight" :src="pdfUrl"></iframe>
+  </div>
 </template>
 
 <script>
-//引入VueOfficeDocx组件
-import VueOfficeDocx from '@vue-office/docx'
-//引入相关样式
-import '@vue-office/docx/lib/index.css'
 import { Base64 } from 'js-base64'
 export default {
-  components: {
-    VueOfficeDocx
-  },
   data() {
     return {
-      docx: '' //设置文档网络地址，可以是相对地址
+      viewHeight: 500,
+      pdfUrl: '' //设置文档网络地址，可以是相对地址
     }
   },
   mounted() {
-    console.log(this.$route.query.url)
+    document.documentElement.scrollTop = 0
+    this.viewHeight = Number(localStorage.machineViewHeight) + 25
     if (this.$route.query.url) {
-      this.docx = Base64.decode(this.$route.query.url)
+      this.pdfUrl = `/pdf/web/viewer.html?file=${Base64.decode(this.$route.query.url)}`
     } else {
       this.$router.push({ name: 'JDCarving' })
     }
