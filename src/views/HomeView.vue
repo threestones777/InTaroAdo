@@ -21,7 +21,7 @@
               <div
                 class="picture d-block w-100"
                 :style="{
-                  background: `url(${item.netUrl}) no-repeat center center`
+                  background: `url(${item.imageUrl}) no-repeat center center`
                 }"
                 style="background-size: contain"
               >
@@ -87,7 +87,7 @@
               <div
                 class="picture d-block w-100"
                 :style="{
-                  background: `url(${item.netUrl}) no-repeat center center`
+                  background: `url(${item.imageUrl}) no-repeat center center`
                 }"
                 style="background-size: contain"
               >
@@ -122,7 +122,7 @@
           <div
             class="picture cardCss"
             :style="{
-              background: `url(${item.netUrl}) no-repeat center center`
+              background: `url(${item.imageUrl}) no-repeat center center`
             }"
             style="background-size: contain"
           ></div>
@@ -152,7 +152,7 @@
       <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" v-if="isShow">
           <div class="modal-body" style="text-align: center">
-            <img :src="dialogMsg.netUrl" alt="" />
+            <img :src="dialogMsg.imageUrl" alt="" />
           </div>
           <div class="modal-footer">
             <i class="bi bi-x-circle closeBtn" data-bs-dismiss="modal" @click="isShow = false"></i>
