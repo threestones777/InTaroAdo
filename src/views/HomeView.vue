@@ -25,12 +25,7 @@
                 }"
                 style="background-size: contain"
               >
-                <i
-                  class="bi bi-eye-fill carouselToSee"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  @click="openDialog(item)"
-                ></i>
+                <ImageView class="imgView" :url="item.imageUrl"></ImageView>
               </div>
             </div>
           </div>
@@ -126,36 +121,11 @@
             }"
             style="background-size: contain"
           ></div>
-          <div class="card-body" style="color: #910326">
+          <div class="card-body" style="color: #910326; white-space: nowrap">
             <h5 class="card-title">
               <span>{{ item.name }}</span>
-              <i
-                class="bi bi-eye-fill toSee"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                @click="openDialog(item)"
-              ></i>
+              <ImageView :url="item.imageUrl"></ImageView>
             </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- 弹窗 -->
-    <div
-      class="modal fade"
-      data-bs-backdrop="static"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content" v-if="isShow">
-          <div class="modal-body" style="text-align: center">
-            <img :src="dialogMsg.imageUrl" alt="" />
-          </div>
-          <div class="modal-footer">
-            <i class="bi bi-x-circle closeBtn" data-bs-dismiss="modal" @click="isShow = false"></i>
           </div>
         </div>
       </div>
@@ -165,14 +135,17 @@
 <script lang="ts">
 import jsonData from '@/json/carousel.json'
 import picData from '@/json/picShow.json'
+import ImageView from '../components/ImageView.vue'
 export default {
+  components: {
+    ImageView
+  },
   data() {
     return {
       jdArray: [] as any,
       cadArray: [] as any,
       picArray: [] as any,
-      dialogMsg: {} as any,
-      isShow: false
+      dialogMsg: {} as any
     }
   },
   created() {
@@ -184,11 +157,6 @@ export default {
     this.picArray = picData
   },
   methods: {
-    openDialog(msg: any) {
-      this.dialogMsg = {}
-      this.dialogMsg = msg
-      this.isShow = true
-    },
     toSeeMachine(machine: any) {
       localStorage.machine = machine
       this.$router.push({ name: 'Machine', query: { name: machine } })
@@ -197,6 +165,11 @@ export default {
 }
 </script>
 <style scoped>
+.imgView {
+  position: relative;
+  top: 45%;
+  left: 46%;
+}
 .picture {
   height: 300px;
   margin-bottom: 10px;

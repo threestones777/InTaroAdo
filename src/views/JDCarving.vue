@@ -15,11 +15,15 @@
             </h5>
             <div class="row">
               <div class="col-sm-4 picture">
-                <el-image style="height: 100%" :src="item.imageUrl" fit="contain" />
+                <t-image
+                  style="height: 100%; background-color: transparent"
+                  :src="item.imageUrl"
+                  fit="contain"
+                />
               </div>
               <div class="col-sm-8 longCss">{{ item.description }}</div>
             </div>
-            <div class="seeDetail" @click="openSkill(item.docxUrl)">
+            <div class="seeDetail" @click="openSkill(item.pdfUrl)">
               查看详情<i class="bi bi-eye-fill"></i>
             </div>
           </div>

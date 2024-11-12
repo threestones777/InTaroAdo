@@ -10,35 +10,11 @@
           style="background-size: contain"
         ></div>
         <div class="card-body" style="color: #910326">
-          <h5 class="card-title">
+          <h5 class="card-title" style="white-space: nowrap">
             <span>{{ item.name }}</span>
-            <i
-              class="bi bi-eye-fill toSee"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              @click="openDialog(item)"
-            ></i>
+            <!-- 图片预览 -->
+            <ImageView :url="item.imageUrl"></ImageView>
           </h5>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 弹窗 -->
-  <div
-    class="modal fade"
-    data-bs-backdrop="static"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content" v-if="isShow">
-        <div class="modal-body" style="text-align: center">
-          <img :src="dialogMsg.imageUrl" alt="" />
-        </div>
-        <div class="modal-footer">
-          <i class="bi bi-x-circle closeBtn" data-bs-dismiss="modal" @click="isShow = false"></i>
         </div>
       </div>
     </div>
@@ -47,12 +23,16 @@
 
 <script lang="ts">
 import jdShow from '@/json/jdShow.json'
+import ImageView from '../components/ImageView.vue'
 export default {
+  components: {
+    ImageView
+  },
   data() {
     return {
       imgArray: [] as any,
       dialogMsg: {} as any,
-      isShow: false
+      img: 'https://tdesign.gtimg.com/demo/demo-image-1.png'
     }
   },
   created() {
@@ -64,7 +44,6 @@ export default {
     openDialog(msg: any) {
       this.dialogMsg = {}
       this.dialogMsg = msg
-      this.isShow = true
     }
   }
 }
@@ -88,6 +67,7 @@ export default {
   position: relative;
   top: 3px;
   left: 3px;
+  color: #910326;
 }
 .closeBtn {
   font-size: 32px;
