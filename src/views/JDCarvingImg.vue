@@ -1,20 +1,22 @@
 <template>
-  <div class="row">
-    <div v-for="(item, index) in imgArray" :key="index" class="col-sm-3">
-      <div class="card cardPd">
-        <div
-          class="picture cardCss"
-          :style="{
-            background: `url(${item.imageUrl}) no-repeat center center`
-          }"
-          style="background-size: contain"
-        ></div>
-        <div class="card-body" style="color: #910326">
-          <h5 class="card-title" style="white-space: nowrap">
-            <span>{{ item.name }}</span>
-            <!-- 图片预览 -->
-            <ImageView :url="item.imageUrl"></ImageView>
-          </h5>
+  <div class="container-fluid">
+    <div class="row">
+      <div v-for="(item, index) in imgArray" :key="index" class="col-sm-3">
+        <div class="card cardPd">
+          <div
+            class="picture cardCss"
+            :style="{
+              background: `url(${item.imageUrl}) no-repeat center center`
+            }"
+            style="background-size: contain"
+          ></div>
+          <div class="card-body" style="color: #910326">
+            <h5 class="card-title" style="white-space: nowrap">
+              <span>{{ item.name }}</span>
+              <!-- 图片预览 -->
+              <ImageView :url="item.imageUrl"></ImageView>
+            </h5>
+          </div>
         </div>
       </div>
     </div>
