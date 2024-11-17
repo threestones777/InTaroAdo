@@ -1,17 +1,7 @@
 <template>
   <!-- 图片预览 -->
   <div class="seePosition">
-    <div class="tdesign-demo-image-viewer__base">
-      <t-image-viewer mode="modal" :images="[{ mainImage: url, download: false }]">
-        <template #trigger="{ open }">
-          <div class="tdesign-demo-image-viewer__ui-image">
-            <div class="tdesign-demo-image-viewer__ui-image--hover" @click="open">
-              <i class="bi bi-eye-fill toSee"></i>
-            </div>
-          </div>
-        </template>
-      </t-image-viewer>
-    </div>
+    <i class="bi bi-eye-fill toSee" @click="show"></i>
   </div>
 </template>
 
@@ -26,6 +16,13 @@ export default {
   data() {
     return {}
   },
+  methods: {
+    show() {
+      this.$viewerApi({
+        images: [this.url]
+      })
+    }
+  },
   mounted() {}
 }
 </script>
@@ -33,7 +30,6 @@ export default {
 .seePosition {
   display: inline-block;
   position: relative;
-  top: 5px;
 }
 .toSee:hover {
   cursor: pointer;
