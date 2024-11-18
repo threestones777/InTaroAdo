@@ -11,16 +11,16 @@
         <div class="card">
           <div class="card-body" style="color: #910326">
             <h5 class="card-title">
-              <span>{{ item.name }}</span>
+              <span class="nameClick" @click="openSkill(item.pdfUrl)">{{ item.name }}</span>
             </h5>
             <div class="row">
-              <div class="col-sm-4 picture">
-                <t-image
-                  style="height: 100%; background-color: transparent"
-                  :src="item.imageUrl"
-                  fit="contain"
-                />
-              </div>
+              <div
+                class="col-sm-4 picture"
+                :style="{
+                  background: `url(${item.imageUrl}) no-repeat center center`
+                }"
+                style="background-size: contain"
+              ></div>
               <div class="col-sm-8 longCss">{{ item.description }}</div>
             </div>
             <div class="seeDetail" @click="openSkill(item.pdfUrl)">
@@ -57,6 +57,7 @@ export default {
 </script>
 <style scoped>
 .picture {
+  height: 100px;
   text-align: center;
 }
 .longCss {
@@ -71,6 +72,7 @@ export default {
   text-align: right;
   font-weight: bold;
 }
+.nameClick:hover,
 .seeDetail:hover {
   cursor: pointer;
   color: #ff7c00;
