@@ -1,14 +1,25 @@
 <template>
-  <p>前端</p>
+  <h2>前端教程</h2>
+  <SkillList :skillArray="skillArray"></SkillList>
 </template>
 
-<script>
+<script lang="ts">
+import webSkill from '@/json/webSkill.json'
+import SkillList from '../components/SkillList.vue'
 export default {
+  components: {
+    SkillList
+  },
   data() {
-    return {}
+    return {
+      skillArray: [] as any
+    }
   },
   methods: {},
-  mounted() {}
+  mounted() {
+    this.skillArray = []
+    this.skillArray = webSkill
+  }
 }
 </script>
 <style scoped></style>

@@ -32,9 +32,7 @@ export default {
   },
   data() {
     return {
-      imgArray: [] as any,
-      dialogMsg: {} as any,
-      img: 'https://tdesign.gtimg.com/demo/demo-image-1.png'
+      imgArray: [] as any
     }
   },
   created() {
@@ -42,12 +40,7 @@ export default {
     this.imgArray = []
     this.imgArray = jdShow
   },
-  methods: {
-    openDialog(msg: any) {
-      this.dialogMsg = {}
-      this.dialogMsg = msg
-    }
-  }
+  methods: {}
 }
 </script>
 
