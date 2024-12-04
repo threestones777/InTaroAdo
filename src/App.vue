@@ -70,6 +70,9 @@ import { RouterView } from 'vue-router'
                 <li><a class="dropdown-item dropCss" @click="toJump('HtmlCssJs')">技巧</a></li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link toHover" href="#/EBook">电子书</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -101,7 +104,8 @@ export default {
       handler: function (route) {
         console.log(8888888888)
         console.log(route.name)
-        this.isShow = route.name !== 'SkillView' && route.name !== 'Machine'
+        this.isShow =
+          route.name !== 'SkillView' && route.name !== 'Machine' && route.name !== 'EBook'
       },
       immediate: true
     }

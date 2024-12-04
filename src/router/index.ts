@@ -43,6 +43,11 @@ const router = createRouter({
       path: '/SkillView',
       name: 'SkillView',
       component: () => import('../views/SkillView.vue')
+    },
+    {
+      path: '/EBook',
+      name: 'EBook',
+      component: () => import('../views/EBook.vue')
     }
   ]
 })
