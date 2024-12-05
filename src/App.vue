@@ -71,7 +71,7 @@ import { RouterView } from 'vue-router'
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link toHover" href="#/EBook">电子书</a>
+              <a class="nav-link toHover" @click="toJump('EBook')">电子书</a>
             </li>
           </ul>
         </div>
@@ -105,7 +105,7 @@ export default {
         console.log(8888888888)
         console.log(route.name)
         this.isShow =
-          route.name !== 'SkillView' && route.name !== 'Machine' && route.name !== 'EBook'
+          route.name !== 'SkillView' && route.name !== 'Machine' && route.name !== 'EBookView'
       },
       immediate: true
     }

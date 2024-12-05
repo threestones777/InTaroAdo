@@ -48,6 +48,11 @@ const router = createRouter({
       path: '/EBook',
       name: 'EBook',
       component: () => import('../views/EBook.vue')
+    },
+    {
+      path: '/EBookView',
+      name: 'EBookView',
+      component: () => import('../views/EBookView.vue')
     }
   ]
 })
