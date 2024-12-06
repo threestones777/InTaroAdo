@@ -34,12 +34,13 @@ import ebook from '@/json/ebook.json'
 export default {
   data() {
     return {
+      url: '',
       ebook: [] as any
     }
   },
   methods: {
     openSkill(url: any) {
-      localStorage.url = url
+      localStorage.url = Base64.encode(url)
       this.$router.push({ name: 'EBookView', query: { url: Base64.encode(url) } })
     }
   },

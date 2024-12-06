@@ -9,23 +9,12 @@
       }"
     ></div>
     <div
-      class="container-fluid"
-      style="position: absolute; top: 0"
-      :style="{
-        height: height + 'px'
-      }"
+      v-if="isLoading"
+      style="position: absolute; bottom: 50%; left: 50%"
+      class="d-flex justify-content-center"
     >
-      <div style="height: 100%; display: flex; justify-content: space-between">
-        <div class="pageTurning" style="width: 25%" @click="prev"></div>
-        <div style="width: 25%">
-          <div
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasBottom"
-            class="action"
-          ></div>
-        </div>
-        <div class="pageTurning" style="width: 25%" @click="next"></div>
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
     <!-- 进度条 -->
@@ -39,6 +28,19 @@
     >
       <div class="progress-bar bg-info text-dark" :style="{ width: progress * 100 + '%' }"></div>
     </div>
+    <div style="height: 100%; display: flex; justify-content: space-between">
+      <div class="action"><i class="pageTurning bi bi-arrow-90deg-left" @click="toEbook"></i></div>
+      <div class="action">
+        <i
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasBottom"
+          aria-controls="offcanvasBottom"
+          class="pageTurning bi bi-gear"
+        ></i>
+      </div>
+      <div class="action"><i class="pageTurning bi bi-arrow-left-circle" @click="prev"></i></div>
+      <div class="action"><i class="pageTurning bi bi-arrow-right-circle" @click="next"></i></div>
+    </div>
     <!------------------ 抽屉 ------------------>
     <!-- 目录 -->
     <div
@@ -49,12 +51,20 @@
       style="width: 70%"
     >
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">目录</h5>
+        <h4
+          style="color: #910326; font-weight: bold"
+          class="offcanvas-title"
+          id="offcanvasExampleLabel"
+        >
+          目录
+        </h4>
       </div>
       <div class="offcanvas-body">
         <ul>
           <li v-for="item in toc" :key="item.href">
-            <a data-bs-dismiss="offcanvas" @click="goTo(item)">{{ item.label }}</a>
+            <a class="btn toc" role="button" data-bs-dismiss="offcanvas" @click="goTo(item)">{{
+              item.label
+            }}</a>
           </li>
         </ul>
         <button
@@ -100,6 +110,8 @@ export default {
   name: 'EpubReader',
   data() {
     return {
+      ebookName: '',
+      isLoading: true,
       book: null,
       rendition: null,
       navigation: null,
@@ -135,9 +147,16 @@ export default {
 
           // bookAvailable标识，默认为false，为true时代表进度条可操作
           this.bookAvailable = true
-          this.book.rendition.display(
-            this.locations.cfiFromPercentage(Number(localStorage.progress))
-          )
+          console.log(localStorage[this.ebookName])
+          this.book.rendition
+            .display(
+              this.locations.cfiFromPercentage(
+                localStorage[this.ebookName] ? Number(localStorage[this.ebookName]) : 0
+              )
+            )
+            .then(() => {
+              this.isLoading = false
+            })
         })
     },
     prev() {
@@ -159,7 +178,7 @@ export default {
       // 获得当前章节的百分比并设置 保留6位小数
       const currentLocation = this.book.rendition.currentLocation()
       this.progress = currentLocation.start.percentage
-      localStorage.progress = this.progress
+      localStorage.setItem(this.ebookName, this.progress)
     },
 
     goTo(location) {
@@ -168,12 +187,23 @@ export default {
       this.rendition.next().then(() => {
         this.prev()
       })
+    },
+    scrollChange() {
+      this.updateProgress()
+    },
+    toEbook() {
+      this.$router.push({ name: 'EBook' })
     }
   },
   mounted() {
-    this.height = Number(localStorage.machineViewHeight)
+    this.ebookName = this.$route.query.url
+    this.height = Number(localStorage.machineViewHeight) - 25
     this.initializeEpub()
-    this.progress = Number(localStorage.progress)
+    this.progress = Number(localStorage[this.ebookName])
+    const scrollview = this.$refs['scrollview']
+    // 添加滚动监听，该滚动监听了拖拽滚动条
+    // 尾部的 true 最好加上，我这边测试没加 true ，拖拽滚动条无法监听到滚动，加上则可以监听到拖拽滚动条滚动回调
+    scrollview.addEventListener('scroll', this.scrollChange, true)
   }
 }
 </script>
@@ -190,49 +220,30 @@ export default {
   width: 100%;
   height: 500px;
 }
-.action {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  top: 40%;
-  margin: 0 auto;
-}
 
 .pageTurning {
+  font-size: 20px;
+  color: #910326;
+  padding-top: 10px;
+  display: inline-block;
+}
+.pageTurning:hover {
+  cursor: pointer;
+  color: #ff7c00;
+}
+
+.action {
   width: 25%;
-  height: 100%;
+  text-align: center;
 }
 
 .toc {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  width: 50%;
-  max-height: 20%;
-  overflow: auto;
-  background-color: #f8f8f8;
-  border-top: 1px solid #ccc;
-  padding: 10px;
+  color: #910326;
 }
 
-.toc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.toc li {
-  margin-bottom: 5px;
-}
-
-.toc a {
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.toc a:hover {
+.toc:hover {
   text-decoration: underline;
+  cursor: pointer;
+  color: #ff7c00;
 }
 </style>
-<!-- var book = Epub('/ebook/周易悬象·道德悬解.epub') -->
