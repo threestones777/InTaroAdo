@@ -53,6 +53,11 @@ const router = createRouter({
       path: '/EBookView',
       name: 'EBookView',
       component: () => import('../views/EBookView.vue')
+    },
+    {
+      path: '/EBcgD',
+      name: 'EBcgD',
+      component: () => import('../views/EBcgD.vue')
     }
   ]
 })
