@@ -24,54 +24,49 @@ import { RouterView } from 'vue-router'
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
             <li class="nav-item">
-              <a class="nav-link toHover" href="/">首页</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle toHover"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                精雕
-              </a>
-              <ul class="dropdown-menu" style="background-color: #910326">
-                <li><a class="dropdown-item dropCss" @click="toJump('JDCarving')">技巧</a></li>
-                <li><a class="dropdown-item dropCss" @click="toJump('JDCarvingImg')">图纸</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle toHover"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                三维 CAD
-              </a>
-              <ul class="dropdown-menu" style="background-color: #910326">
-                <li><a class="dropdown-item dropCss" @click="toJump('3DCad')">技巧</a></li>
-                <li><a class="dropdown-item dropCss" @click="toJump('3DCadModel')">模型</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle toHover"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                前端
-              </a>
-              <ul class="dropdown-menu" style="background-color: #910326">
-                <li><a class="dropdown-item dropCss" @click="toJump('HtmlCssJs')">技巧</a></li>
-              </ul>
+              <a :class="{ isMe: isMe('Home') }" class="nav-link toHover" href="/">首页</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link toHover" @click="toJump('EBook')">电子书</a>
+              <a
+                :class="{ isMe: isMe('JDCarving') }"
+                class="nav-link toHover"
+                @click="toJump('JDCarving')"
+                >精雕教程</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                :class="{ isMe: isMe('JDCarvingImg') }"
+                class="nav-link toHover"
+                @click="toJump('JDCarvingImg')"
+                >精雕图</a
+              >
+            </li>
+            <li class="nav-item">
+              <a :class="{ isMe: isMe('3DCad') }" class="nav-link toHover" @click="toJump('3DCad')"
+                >三维教程</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                :class="{ isMe: isMe('3DCadModel') }"
+                class="nav-link toHover"
+                @click="toJump('3DCadModel')"
+                >三维模型</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                :class="{ isMe: isMe('HtmlCssJs') }"
+                class="nav-link toHover"
+                @click="toJump('HtmlCssJs')"
+                >前端教程</a
+              >
+            </li>
+            <li class="nav-item">
+              <a :class="{ isMe: isMe('EBook') }" class="nav-link toHover" @click="toJump('EBook')"
+                >电子书</a
+              >
             </li>
           </ul>
         </div>
@@ -96,6 +91,7 @@ import { RouterView } from 'vue-router'
 export default {
   data() {
     return {
+      routeName: 'Home',
       isShow: true
     }
   },
@@ -104,6 +100,7 @@ export default {
       handler: function (route) {
         console.log(8888888888)
         console.log(route.name)
+        this.routeName = route.name
         this.isShow =
           route.name !== 'SkillView' && route.name !== 'Machine' && route.name !== 'EBookView'
       },
@@ -117,6 +114,9 @@ export default {
     localStorage.machineViewHeight = allHeight - headHeight - footHeight
   },
   methods: {
+    isMe(str) {
+      return this.routeName === str
+    },
     toJump(target: any) {
       document.getElementById('navbarScroll')?.classList.remove('show')
       this.$router.push({ name: target })
@@ -159,6 +159,10 @@ export default {
 }
 .toHover:hover {
   cursor: pointer;
+  color: #ff7c00;
+}
+.isMe {
+  font-weight: bold;
   color: #ff7c00;
 }
 </style>

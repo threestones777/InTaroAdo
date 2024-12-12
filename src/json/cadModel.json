@@ -1,0 +1,26 @@
+[
+  {
+    "id": 153131,
+    "isActive": true,
+    "name": "茶壶",
+    "click": "teapot",
+    "imageUrl": "/image/carousel/153131.png",
+    "netUrl": "https://s21.ax1x.com/2024/10/26/pAwvBD0.png"
+  },
+  {
+    "id": 153313,
+    "isActive": false,
+    "name": "盖",
+    "click": "dao",
+    "imageUrl": "/image/carousel/153313.png",
+    "netUrl": "https://s21.ax1x.com/2024/10/26/pAwv0uq.png"
+  },
+  {
+    "id": 152534,
+    "isActive": false,
+    "name": "底座",
+    "click": "di",
+    "imageUrl": "/image/carousel/152534.png",
+    "netUrl": "https://s21.ax1x.com/2024/10/26/pAwvDbV.png"
+  }
+]

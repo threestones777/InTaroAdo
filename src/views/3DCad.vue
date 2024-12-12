@@ -1,5 +1,4 @@
 <template>
-  <h2>CAD教程</h2>
   <SkillList :skillArray="skillArray"></SkillList>
 </template>
 

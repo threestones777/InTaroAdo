@@ -1,5 +1,4 @@
 <template>
-  <h2>电子书</h2>
   <div class="container-fluid">
     <div class="row">
       <div v-for="(item, index) in ebook" :key="index" class="col-sm-4" style="margin-top: 10px">
