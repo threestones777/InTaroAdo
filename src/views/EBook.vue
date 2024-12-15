@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body" style="color: #910326">
             <h5 class="card-title">
-              <span class="nameClick" @click="openSkill(item.pdfUrl)">{{ item.name }}</span>
+              <span class="nameClick" @click="openSkill(item)">{{ item.name }}</span>
             </h5>
             <div class="row">
               <div
@@ -17,7 +17,7 @@
               ></div>
               <div class="col-sm-8 longCss">{{ item.description }}</div>
             </div>
-            <div class="seeDetail" @click="openSkill(item.pdfUrl)">
+            <div class="seeDetail" @click="openSkill(item)">
               查看详情<i class="bi bi-eye-fill"></i>
             </div>
           </div>
@@ -33,14 +33,15 @@ import ebook from '@/json/ebook.json'
 export default {
   data() {
     return {
-      url: '',
+      item: '',
       ebook: [] as any
     }
   },
   methods: {
-    openSkill(url: any) {
-      localStorage.url = Base64.encode(url)
-      this.$router.push({ name: 'EBookView', query: { url: Base64.encode(url) } })
+    openSkill(item: any) {
+      alert('敬请期待。。。')
+      // localStorage.epubName = Base64.encode(item.name)
+      // this.$router.push({ name: 'EBookView', query: { url: Base64.encode(item.name) } })
     }
   },
   mounted() {

@@ -15,14 +15,12 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "element-plus": "^2.9.0",
     "js-base64": "^3.7.7",
     "pinia": "^2.1.7",
     "scss": "^0.2.4",
     "v-viewer": "^3.0.21",
     "viewerjs": "^1.11.6",
     "vue": "^3.4.29",
-    "vue-reader": "^1.2.15",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
