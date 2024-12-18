@@ -19,6 +19,7 @@
             </div>
             <div class="seeDetail" @click="openSkill(item)">
               查看详情<i class="bi bi-eye-fill"></i>
+              <a :href="item.epubUrl">下载</a>
             </div>
           </div>
         </div>
@@ -39,9 +40,9 @@ export default {
   },
   methods: {
     openSkill(item: any) {
-      alert('敬请期待。。。')
-      // localStorage.epubName = Base64.encode(item.name)
-      // this.$router.push({ name: 'EBookView', query: { url: Base64.encode(item.name) } })
+      // alert('敬请期待。。。')
+      localStorage.epubName = Base64.encode(item.name)
+      this.$router.push({ name: 'EBookView', query: { url: Base64.encode(item.name) } })
     }
   },
   mounted() {
